@@ -1,0 +1,9 @@
+{
+  "started_at": "2026-10-27T14:25:37.196761+08:00",
+  "display_kept_on": false,
+  "persistent_power_plan_changed": false,
+  "enabled": true,
+  "stopped_because": "complete",
+  "finished_at": "2026-10-27T14:30:52.222356+08:00",
+  "request_released": true
+}

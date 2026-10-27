@@ -1,0 +1,17 @@
+{
+  "analysis_script_sha256": "dcd6e54b81478d83b3fb8460a7290a5a8953465382ba906beb3fa31bb40eabf3",
+  "inputs": {
+    "n010\\test\\per-view.csv": "8d11b32a7e1a3a8c4ee4f2f690cb287c0cb9e87c32f4e98e2c585f2fa30f228f",
+    "n020\\test\\per-view.csv": "8cbb8bca512f3e9bc02a63c4d40edc669c985f309ba4f262a5f5db1b6c0d62d9",
+    "n040\\test\\per-view.csv": "b2b2fc27663f15e45132f94d95e02baaa142ef586200c6b9874ef98d2b98bc7f"
+  },
+  "figures": {
+    "quality-vs-views.png": "44cd229598211b8167a59fdd9b5dcf312f2377a88a5f369933a2783bc076edaf",
+    "quality-vs-views.svg": "735f7d28743f419b8cff674d04105560e8491c5a04936a16c0dd820f73b3f557",
+    "test-view-0000.png": "a6fcb8e481c4c91dbe9a17a6b4a1aba118618efeb3ffaa0ac7f74a24a9f3ceb4",
+    "test-view-0050.png": "1a15aaf4221793df23e091c33950b39974e3ee3dff42d9cd8edbd1cf29e53730",
+    "test-view-0100.png": "e66c26f1623d3190f07c697cff27303093c991227d7c7b3cd74057f1458eee57",
+    "test-view-0150.png": "56432460c88a26a99bc9b6ea8704d1acd626a86c4dda68c987704348c8149b6e",
+    "time-and-size.png": "273c36a9589cca7015c2550e753f79471ea09936fa9c2000cf92ac2855fdd943"
+  }
+}

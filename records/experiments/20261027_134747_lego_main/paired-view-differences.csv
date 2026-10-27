@@ -1,0 +1,10 @@
+comparison,metric,positive_means,mean_improvement,improved_images,worse_images,unchanged_images,test_images
+20_vs_10,psnr,higher-view-count model improves,4.427108402252197,199,1,0,200
+20_vs_10,ssim,higher-view-count model improves,0.055473776161670686,198,2,0,200
+20_vs_10,lpips,higher-view-count model improves,0.03172711280727526,198,2,0,200
+40_vs_10,psnr,higher-view-count model improves,8.774671745300292,198,2,0,200
+40_vs_10,ssim,higher-view-count model improves,0.08573983907699585,198,2,0,200
+40_vs_10,lpips,higher-view-count model improves,0.04533529951440869,198,2,0,200
+40_vs_20,psnr,higher-view-count model improves,4.347563343048096,191,9,0,200
+40_vs_20,ssim,higher-view-count model improves,0.030266062915325166,197,3,0,200
+40_vs_20,lpips,higher-view-count model improves,0.013608186707133428,196,4,0,200

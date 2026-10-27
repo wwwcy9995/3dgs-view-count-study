@@ -1,0 +1,174 @@
+{
+  "fingerprints": {
+    "10": "b9206ed4c2cf2dd8ca06505b5aacbf6d8bc88c269ebb67fc7e613ad843a0dbbd",
+    "20": "b9206ed4c2cf2dd8ca06505b5aacbf6d8bc88c269ebb67fc7e613ad843a0dbbd",
+    "40": "b9206ed4c2cf2dd8ca06505b5aacbf6d8bc88c269ebb67fc7e613ad843a0dbbd"
+  },
+  "settings": {
+    "model": {
+      "_target": "nerfstudio.models.splatfacto.SplatfactoModel",
+      "enable_collider": true,
+      "collider_params": {
+        "far_plane": 6.0,
+        "near_plane": 2.0
+      },
+      "loss_coefficients": {
+        "rgb_loss_coarse": 1.0,
+        "rgb_loss_fine": 1.0
+      },
+      "eval_num_rays_per_chunk": 4096,
+      "prompt": null,
+      "warmup_length": 500,
+      "refine_every": 100,
+      "resolution_schedule": 3000,
+      "background_color": "white",
+      "num_downscales": 0,
+      "cull_alpha_thresh": 0.1,
+      "cull_scale_thresh": 0.5,
+      "reset_alpha_every": 30,
+      "densify_grad_thresh": 0.0008,
+      "use_absgrad": true,
+      "densify_size_thresh": 0.01,
+      "n_split_samples": 2,
+      "sh_degree_interval": 1000,
+      "cull_screen_size": 0.15,
+      "split_screen_size": 0.05,
+      "stop_screen_size_at": 4000,
+      "random_init": false,
+      "num_random": 50000,
+      "random_scale": 10.0,
+      "ssim_lambda": 0.2,
+      "stop_split_at": 15000,
+      "sh_degree": 3,
+      "use_scale_regularization": false,
+      "max_gauss_ratio": 10.0,
+      "output_depth_during_training": false,
+      "rasterize_mode": "classic",
+      "camera_optimizer": {
+        "_target": "nerfstudio.cameras.camera_optimizers.CameraOptimizer",
+        "mode": "off",
+        "trans_l2_penalty": 0.01,
+        "rot_l2_penalty": 0.001,
+        "optimizer": null,
+        "scheduler": null
+      },
+      "use_bilateral_grid": false,
+      "grid_shape": [
+        16,
+        16,
+        8
+      ],
+      "color_corrected_metrics": false
+    },
+    "optimizers": {
+      "bilateral_grid": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.002,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": {
+          "_target": "nerfstudio.engine.schedulers.ExponentialDecayScheduler",
+          "lr_pre_warmup": 0,
+          "lr_final": 0.0001,
+          "warmup_steps": 1000,
+          "max_steps": 30000,
+          "ramp": "cosine"
+        }
+      },
+      "camera_opt": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.0001,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": {
+          "_target": "nerfstudio.engine.schedulers.ExponentialDecayScheduler",
+          "lr_pre_warmup": 0,
+          "lr_final": 5e-07,
+          "warmup_steps": 1000,
+          "max_steps": 30000,
+          "ramp": "cosine"
+        }
+      },
+      "features_dc": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.0025,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": null
+      },
+      "features_rest": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.000125,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": null
+      },
+      "means": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.00016,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": {
+          "_target": "nerfstudio.engine.schedulers.ExponentialDecayScheduler",
+          "lr_pre_warmup": 1e-08,
+          "lr_final": 1.6e-06,
+          "warmup_steps": 0,
+          "max_steps": 30000,
+          "ramp": "cosine"
+        }
+      },
+      "opacities": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.05,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": null
+      },
+      "quats": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.001,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": null
+      },
+      "scales": {
+        "optimizer": {
+          "_target": "torch.optim.adam.Adam",
+          "lr": 0.005,
+          "eps": 1e-15,
+          "max_norm": null,
+          "weight_decay": 0
+        },
+        "scheduler": null
+      }
+    },
+    "seed": 42,
+    "steps": 30000,
+    "camera_res_scale_factor": 0.5,
+    "cache_images": "cpu",
+    "cache_images_type": "uint8",
+    "steps_per_eval_image": 0,
+    "steps_per_eval_all_images": 0
+  }
+}

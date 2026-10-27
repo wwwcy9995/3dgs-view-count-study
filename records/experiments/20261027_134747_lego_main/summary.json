@@ -1,0 +1,157 @@
+{
+  "run_id": "20261027_134747_lego_main",
+  "rows": [
+    {
+      "scene": "lego",
+      "train_views": 10,
+      "test_views": 200,
+      "steps": 30000,
+      "seed": 42,
+      "psnr_db": 25.87874984741211,
+      "ssim": 0.8938211798667908,
+      "lpips": 0.05602099746465683,
+      "psnr_image_std": 2.59466552734375,
+      "ssim_image_std": 0.030069997534155846,
+      "lpips_image_std": 0.019106872379779816,
+      "train_process_elapsed_seconds": 474.18965803400005,
+      "start_finish_clock_seconds": 474.196943,
+      "clock_gap_seconds": 0.007284965999929227,
+      "gaussians": 37685,
+      "ply_bytes": 9347472,
+      "ply_mib": 8.914443969726562,
+      "checkpoint_bytes": 36581470
+    },
+    {
+      "scene": "lego",
+      "train_views": 20,
+      "test_views": 200,
+      "steps": 30000,
+      "seed": 42,
+      "psnr_db": 30.305858612060547,
+      "ssim": 0.9492949843406677,
+      "lpips": 0.02429388463497162,
+      "psnr_image_std": 2.7992794513702393,
+      "ssim_image_std": 0.017963869497179985,
+      "lpips_image_std": 0.011737910099327564,
+      "train_process_elapsed_seconds": 514.170782807,
+      "start_finish_clock_seconds": 1493.980542,
+      "clock_gap_seconds": 979.809759193,
+      "gaussians": 39073,
+      "ply_bytes": 9691696,
+      "ply_mib": 9.242721557617188,
+      "checkpoint_bytes": 37564510
+    },
+    {
+      "scene": "lego",
+      "train_views": 40,
+      "test_views": 200,
+      "steps": 30000,
+      "seed": 42,
+      "psnr_db": 34.65342330932617,
+      "ssim": 0.9795610308647156,
+      "lpips": 0.010685697197914124,
+      "psnr_image_std": 3.4865972995758057,
+      "ssim_image_std": 0.009424395859241486,
+      "lpips_image_std": 0.006384970620274544,
+      "train_process_elapsed_seconds": 483.21707301999993,
+      "start_finish_clock_seconds": 483.23184,
+      "clock_gap_seconds": 0.01476698000004717,
+      "gaussians": 36876,
+      "ply_bytes": 9146840,
+      "ply_mib": 8.723106384277344,
+      "checkpoint_bytes": 36010078
+    }
+  ],
+  "paired_differences": [
+    {
+      "comparison": "20_vs_10",
+      "metric": "psnr",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 4.427108402252197,
+      "improved_images": 199,
+      "worse_images": 1,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "20_vs_10",
+      "metric": "ssim",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.055473776161670686,
+      "improved_images": 198,
+      "worse_images": 2,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "20_vs_10",
+      "metric": "lpips",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.03172711280727526,
+      "improved_images": 198,
+      "worse_images": 2,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_10",
+      "metric": "psnr",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 8.774671745300292,
+      "improved_images": 198,
+      "worse_images": 2,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_10",
+      "metric": "ssim",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.08573983907699585,
+      "improved_images": 198,
+      "worse_images": 2,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_10",
+      "metric": "lpips",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.04533529951440869,
+      "improved_images": 198,
+      "worse_images": 2,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_20",
+      "metric": "psnr",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 4.347563343048096,
+      "improved_images": 191,
+      "worse_images": 9,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_20",
+      "metric": "ssim",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.030266062915325166,
+      "improved_images": 197,
+      "worse_images": 3,
+      "unchanged_images": 0,
+      "test_images": 200
+    },
+    {
+      "comparison": "40_vs_20",
+      "metric": "lpips",
+      "positive_means": "higher-view-count model improves",
+      "mean_improvement": 0.013608186707133428,
+      "improved_images": 196,
+      "worse_images": 4,
+      "unchanged_images": 0,
+      "test_images": 200
+    }
+  ]
+}

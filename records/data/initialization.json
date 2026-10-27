@@ -1,0 +1,26 @@
+{
+  "kind": "image-independent random points, not SfM and not a reconstructed scene",
+  "count": 10000,
+  "seed": 42,
+  "rng": "numpy.default_rng/PCG64",
+  "bounds": [
+    [
+      -1.5,
+      -1.5,
+      -1.5
+    ],
+    [
+      1.5,
+      1.5,
+      1.5
+    ]
+  ],
+  "rgb": [
+    128,
+    128,
+    128
+  ],
+  "file": "data/initialization/lego_random_seed42.ply",
+  "sha256": "734ca14ce0ca4a163aef3f081d8ffc72f2c744ede8204bc3f9c766f33d659584",
+  "policy": "Use this exact point cloud for every view-count group; no input image is used to generate it"
+}

@@ -1,0 +1,19 @@
+{
+  "scope": "formal_test",
+  "experiment_name": "lego-n020-s42",
+  "method_name": "splatfacto",
+  "checkpoint": "${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n020-s42/splatfacto/20261027_134747_lego_main_a1/nerfstudio_models/step-000029999.ckpt",
+  "step": 29999,
+  "image_count": 200,
+  "results": {
+    "psnr": 30.305858612060547,
+    "psnr_std": 2.7992794513702393,
+    "ssim": 0.9492949843406677,
+    "ssim_std": 0.017963869497179985,
+    "lpips": 0.02429388463497162,
+    "lpips_std": 0.011737910099327564
+  },
+  "elapsed_seconds_including_image_writes": 16.788207021000062,
+  "standard_deviation_scope": "across images, not repeated training runs",
+  "evaluator": "Nerfstudio model metrics on float images; no color correction; white background"
+}

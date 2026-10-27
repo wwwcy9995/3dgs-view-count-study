@@ -1,0 +1,554 @@
+{
+  "source_experiment": "20261027_134747_lego_main",
+  "policy": "explicit allow-list; no original dataset/models; machine paths redacted; no metric alteration",
+  "source_experiment_files_unchanged": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "published_sha256": "a0651092fd6a650ce9593fbafecc979e1ef270387e01148dd9ac26f246675734",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": ".gitignore",
+      "published_sha256": "d96ab3f3fc8091c8f031ef75653b7022585f9c501cd64eec9152d3e447292586",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "README.md",
+      "published_sha256": "f43525c974985ef66d7edaebfa3b76d8c360550f94699a34b27cec81729dcc23",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "published_sha256": "9381eaf8a13fc19aed9f44275affd24f4069510e1d9fb1191f37d2b95a1dea17",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "configs/constraints.txt",
+      "original_sha256": "c1ef1cb1bed33b01dea84ec867cdf9fedce0603d1d7838bd79f879410f8b35e6",
+      "published_sha256": "c1ef1cb1bed33b01dea84ec867cdf9fedce0603d1d7838bd79f879410f8b35e6",
+      "changed_for_publication": false
+    },
+    {
+      "path": "configs/lego-main.json",
+      "original_sha256": "0b8c19c8fdab97a856e4a74e2e23c8a6110f54dbb5a25662660d8c60ac800425",
+      "published_sha256": "0b8c19c8fdab97a856e4a74e2e23c8a6110f54dbb5a25662660d8c60ac800425",
+      "changed_for_publication": false
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "published_sha256": "0b23b392bd94d13b5c51d36c60ca1364c6d94ca70f0224c04cd96b81d9168617",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "docs/RESULTS.md",
+      "published_sha256": "cf2022919c69852b32915fc97a82ed6d203089b71f960dd1cdf106228b0a1183",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "notes/method-and-metrics.md",
+      "original_sha256": "89030c07b2ee86e126e65baab7a14da0c637f63d642a35a2709aafeb254aad50",
+      "published_sha256": "89030c07b2ee86e126e65baab7a14da0c637f63d642a35a2709aafeb254aad50",
+      "changed_for_publication": false
+    },
+    {
+      "path": "output/report/report-provenance.json",
+      "original_sha256": "de5920208eaacfdf15315344718ae34af5829ecd5cdbc25446fbbd57d981b8c4",
+      "published_sha256": "854b945d1a0f2fc09dae38a1c742a6f8343eb68b9860ed28196cecaee852147f",
+      "changed_for_publication": true
+    },
+    {
+      "path": "output/report/report-qa.json",
+      "original_sha256": "4d7e94fa185d8f93022db2d681188c277bfd105fa69fc5330325c66bcc92b8e1",
+      "published_sha256": "ce207d08affae8cd4a913b04b46147415014505ec3e4dcf3c2342898d9937c4a",
+      "changed_for_publication": true
+    },
+    {
+      "path": "output/report/训练视角数量与3DGS新视角合成_课程报告.docx",
+      "original_sha256": "c6c6ae19b6d0e5aacc2b0b2fb23393b26ec1a21741edf9eb33c616ee039d1cf4",
+      "published_sha256": "c6c6ae19b6d0e5aacc2b0b2fb23393b26ec1a21741edf9eb33c616ee039d1cf4",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/data/camera-coverage.png",
+      "original_sha256": "c329fb98096ec827c47176b7ff4755f478211a0836f2bc56f3a3ea24d71f26ab",
+      "published_sha256": "c329fb98096ec827c47176b7ff4755f478211a0836f2bc56f3a3ea24d71f26ab",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/data/camera-coverage.svg",
+      "original_sha256": "de3c8d0f1ac931e5cb020d6b0acd9f7adc368756067fd32b9e8a407677e5777f",
+      "published_sha256": "de3c8d0f1ac931e5cb020d6b0acd9f7adc368756067fd32b9e8a407677e5777f",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/data/initialization.json",
+      "original_sha256": "5471ce5ec1ad901e93b2283c4d05bd5a2adf134cdfc435b167ecf1d862b2035a",
+      "published_sha256": "5471ce5ec1ad901e93b2283c4d05bd5a2adf134cdfc435b167ecf1d862b2035a",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/data/lego-source.json",
+      "original_sha256": "9b52ad3caddfb29041fa9271ec98645d0d124e0344a1d574a18a5b2777fbd037",
+      "published_sha256": "9b52ad3caddfb29041fa9271ec98645d0d124e0344a1d574a18a5b2777fbd037",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/data/lego-splits.json",
+      "original_sha256": "5ee2dd617457bbcddaee71b4289d31c0f80eef2ee8ba7dd2f3de78717acbcae4",
+      "published_sha256": "5ee2dd617457bbcddaee71b4289d31c0f80eef2ee8ba7dd2f3de78717acbcae4",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/analysis-provenance.json",
+      "original_sha256": "eaf6ab6b406364734d25739b5354a1179b1e321ba767701315fe8c3f5956cc94",
+      "published_sha256": "ca09aa498961972f8621f925630159fbf4cdb73495d2783f1a32dd138c4b23ae",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/code/analyze_experiments.py",
+      "original_sha256": "dcd6e54b81478d83b3fb8460a7290a5a8953465382ba906beb3fa31bb40eabf3",
+      "published_sha256": "dcd6e54b81478d83b3fb8460a7290a5a8953465382ba906beb3fa31bb40eabf3",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/code/evaluate_views.py",
+      "original_sha256": "bbb0adba4f69e5c3f1e9f33c8a74d27d50fa0b2004d41077098e3e89fdaffbb2",
+      "published_sha256": "bbb0adba4f69e5c3f1e9f33c8a74d27d50fa0b2004d41077098e3e89fdaffbb2",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/code/run_experiments.py",
+      "original_sha256": "2fa6cd13c13d8744597a1784fdc5d9341f7e8a951491081ee9c6fd208460c929",
+      "published_sha256": "2fa6cd13c13d8744597a1784fdc5d9341f7e8a951491081ee9c6fd208460c929",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/common-training-settings.json",
+      "original_sha256": "fe9632d66050f88de32d11fda644a833aa7d509a4d7bb8b6290a6278facc90c3",
+      "published_sha256": "fe9632d66050f88de32d11fda644a833aa7d509a4d7bb8b6290a6278facc90c3",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/comparison-crops.json",
+      "original_sha256": "ae7153cc6c40911dd43febe52841fdcd7ac4618aee35d64d27457cb2cf3d78e1",
+      "published_sha256": "ae7153cc6c40911dd43febe52841fdcd7ac4618aee35d64d27457cb2cf3d78e1",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/quality-vs-views.png",
+      "original_sha256": "44cd229598211b8167a59fdd9b5dcf312f2377a88a5f369933a2783bc076edaf",
+      "published_sha256": "44cd229598211b8167a59fdd9b5dcf312f2377a88a5f369933a2783bc076edaf",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/quality-vs-views.svg",
+      "original_sha256": "735f7d28743f419b8cff674d04105560e8491c5a04936a16c0dd820f73b3f557",
+      "published_sha256": "735f7d28743f419b8cff674d04105560e8491c5a04936a16c0dd820f73b3f557",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/test-view-0000.png",
+      "original_sha256": "a6fcb8e481c4c91dbe9a17a6b4a1aba118618efeb3ffaa0ac7f74a24a9f3ceb4",
+      "published_sha256": "a6fcb8e481c4c91dbe9a17a6b4a1aba118618efeb3ffaa0ac7f74a24a9f3ceb4",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/test-view-0050.png",
+      "original_sha256": "1a15aaf4221793df23e091c33950b39974e3ee3dff42d9cd8edbd1cf29e53730",
+      "published_sha256": "1a15aaf4221793df23e091c33950b39974e3ee3dff42d9cd8edbd1cf29e53730",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/test-view-0100.png",
+      "original_sha256": "e66c26f1623d3190f07c697cff27303093c991227d7c7b3cd74057f1458eee57",
+      "published_sha256": "e66c26f1623d3190f07c697cff27303093c991227d7c7b3cd74057f1458eee57",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/test-view-0150.png",
+      "original_sha256": "56432460c88a26a99bc9b6ea8704d1acd626a86c4dda68c987704348c8149b6e",
+      "published_sha256": "56432460c88a26a99bc9b6ea8704d1acd626a86c4dda68c987704348c8149b6e",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/figures/time-and-size.png",
+      "original_sha256": "273c36a9589cca7015c2550e753f79471ea09936fa9c2000cf92ac2855fdd943",
+      "published_sha256": "273c36a9589cca7015c2550e753f79471ea09936fa9c2000cf92ac2855fdd943",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n010/evaluation-a1.log",
+      "original_sha256": "020e7930aa98dc395a34f874cc3116552ed1ff47f039b59934d435c5f186cde0",
+      "published_sha256": "065c1148e281a11b1b58107eacc37e8f98621b5792870fa6a43d1e624f6eb08f",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n010/export-a1.log",
+      "original_sha256": "5be20b1c9d91aa824888bd65afd94e5b44fe391f35437e49bc4ec2e42aa5493c",
+      "published_sha256": "0005905f07a525d5aefd13c86639db8301e51cb7ce4e838b46d2a09f49809e6b",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n010/test/metrics.json",
+      "original_sha256": "fd96ede1ab9c76828be20825290f05b51294f8fc6ca91dd3965848ab655e9101",
+      "published_sha256": "4923a06548905112d405611135cb20f2dee3b7817ce3c36781b477545097c21d",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n010/test/per-view.csv",
+      "original_sha256": "8d11b32a7e1a3a8c4ee4f2f690cb287c0cb9e87c32f4e98e2c585f2fa30f228f",
+      "published_sha256": "9201aba1d2088e900650feb504a48d5d3722b5047fffea5d9239ee8a123de906",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n010/training-a1.log",
+      "original_sha256": "8327b41e8a1b82310a91fabcb0a165c9d49bee955f8ff8af36d40be2b3239814",
+      "published_sha256": "8697220dad2646fdd2eb7aa2adaa64d34b9fa0830e1ad2de9e9b0a7f02089cb7",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n020/evaluation-a1.log",
+      "original_sha256": "ba811a06d1ec43c482e4c99b72707f21b172a24987f4b156e6407d1174ad83c1",
+      "published_sha256": "72a7e61ca378330da531a509383531e9c6fcd72bda4353ca1f44553aab02ce45",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n020/export-a1.log",
+      "original_sha256": "8fefefe6fa47b0cde2f518636b26e1d265d020d6e516b826bb1ec06ea69c397c",
+      "published_sha256": "bd738a68cb9d27eba0129e7563489450c68ccb2aec9dc9f5afa8199146816ddd",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n020/test/metrics.json",
+      "original_sha256": "77f827f3aa36439cd4743b27adb5dcb976cb0f891958acb7dbdfbb063102be75",
+      "published_sha256": "0f85d0f5911bf17a328438de3e85e49da7580b5c8b2f1f1c0cfb94b6da472208",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n020/test/per-view.csv",
+      "original_sha256": "8cbb8bca512f3e9bc02a63c4d40edc669c985f309ba4f262a5f5db1b6c0d62d9",
+      "published_sha256": "ca7e19712386fa4b9120498644f6959f849680fbb567b2ef4061084f8c249737",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n020/training-a1.log",
+      "original_sha256": "1ed489168258e79835609340e420aae0c22dea36068f50b219b03ab85ac1da2e",
+      "published_sha256": "63220014ebabae15a057d83d6b4ea257fd70320b918c56b4e804b7a76d0e8d9d",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n040/evaluation-a1.log",
+      "original_sha256": "2cb93cc1a18ad2ced96056e212c052407ca86c66901b369374804676faad9714",
+      "published_sha256": "6a2d5e997735665c89e12b3dd8da38c9a7e8738587b292cd18a5db6ed18271f8",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n040/export-a1.log",
+      "original_sha256": "49f43b2e480ba5a9d619af5f9e131c4dee1e366fd19b387b83626d862d083831",
+      "published_sha256": "4c2a8046b19f972857eac92a7250a8a57fc0e0d8f18755f113e7ae0983ce76e6",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n040/test/metrics.json",
+      "original_sha256": "362739fb37f6c1458d91e1c0db5fa3ed9c6c3a1ac99dc1f0bdf01c94c752d78f",
+      "published_sha256": "0a3841923aaa536f25f0528932662aef7903e22879140cf7d9ff01dd73b4b805",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n040/test/per-view.csv",
+      "original_sha256": "b2b2fc27663f15e45132f94d95e02baaa142ef586200c6b9874ef98d2b98bc7f",
+      "published_sha256": "b1e8caa952f7df30998b847559e0a385e7c57bdbddcd4720f2dd64dad9524bfb",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/n040/training-a1.log",
+      "original_sha256": "244fca0b1db72e223fbc0cc65fed47d601853c04e2924e6fed9268eabe1b844e",
+      "published_sha256": "4c3aad0b05c6c82961b12fa0f17bf96ee081b542076cca5d38591b789ef00aa6",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/paired-view-differences.csv",
+      "original_sha256": "fee0962da9480b653196f42fc468fcf9084743fe1d98ff817d7686f7688e1f26",
+      "published_sha256": "5337fb5f9f8ac1fa0eeed8731fb13b07ca04fa95946c202db73553bf57db12f0",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/protocol-frozen.json",
+      "original_sha256": "d37205c1a3e06d96c652666f0031dbf0ea5a719887ef026da0201d2f4e78f622",
+      "published_sha256": "d37205c1a3e06d96c652666f0031dbf0ea5a719887ef026da0201d2f4e78f622",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/qualitative-analysis.md",
+      "original_sha256": "ba86f089e7d826b6de9c0538b975db2ad30a9263e99dc52aee2765fd5175694d",
+      "published_sha256": "ba86f089e7d826b6de9c0538b975db2ad30a9263e99dc52aee2765fd5175694d",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/session.json",
+      "original_sha256": "954eab7f2e9adeb271a0a765ee6bb861941d222a60d5ed664fbc777b3cda5126",
+      "published_sha256": "a5c8497e7c1e93380f869178dadc4d248bfb2a7ea55c34ab719ac5c868dc3a00",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/summary.csv",
+      "original_sha256": "abf5e81940a8b56fae611cbd8757f297c45ce203067079394754f940dd32f927",
+      "published_sha256": "f8685c23cd36ad1f3970a6a6592ad05358101a322197a5168065dd239547fe68",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/summary.json",
+      "original_sha256": "6ecbabdf1b2ec36d3426a01c3409b8d19278fa84bc0839c3a545d7bb22350ee9",
+      "published_sha256": "6ecbabdf1b2ec36d3426a01c3409b8d19278fa84bc0839c3a545d7bb22350ee9",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/summary.md",
+      "original_sha256": "c2ecdeff24bdd3a6bb842a980ff585763841acef2ac29f90cb473ad66fbcdda4",
+      "published_sha256": "c2ecdeff24bdd3a6bb842a980ff585763841acef2ac29f90cb473ad66fbcdda4",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/temporary-awake.json",
+      "original_sha256": "38dc3359e668d5e8c727f768a04b9bc6d7f3416f3425279e7d4033c007b6e315",
+      "published_sha256": "2f864bedf3d49d92d2e0dbaf87c59508d294f0f8205f3d93f87256d74cff804e",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/test-view-audit.json",
+      "original_sha256": "a2350ae7a5164c82a0aab7b88acdcd02779c92b64af64e0860ed660257408c64",
+      "published_sha256": "f748773eac8675ef5a02ef342ac159ac5907fdece65e88abd19c3413b5f284bd",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/20261027_134747_lego_main/validation-audit.json",
+      "original_sha256": "9984af55eeaa2de8835c398bc1c643892ad6fbb31e651d46d6b278aac8abd8e1",
+      "published_sha256": "2d4c6f1912c3f35e98fb2857b4a8b3380b496c90c8c9e5a9a8a8a4268567e218",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/experiments/latest-run.json",
+      "original_sha256": "b24ede2b1d0f44bedc5a4973d2d4688627a1cae18cd3b1d48170a33d66bd883a",
+      "published_sha256": "b24ede2b1d0f44bedc5a4973d2d4688627a1cae18cd3b1d48170a33d66bd883a",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/setup/conda-explicit.txt",
+      "original_sha256": "60809e9d0698fd4c5fa09bdf7faa7b5c7159b3dbcc91a16ba5c2b491c82594b4",
+      "published_sha256": "60809e9d0698fd4c5fa09bdf7faa7b5c7159b3dbcc91a16ba5c2b491c82594b4",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/setup/environment.json",
+      "original_sha256": "98d164bc5c33176808c72894992ff614eb75b29ecab3ae5047b2a2f568f77623",
+      "published_sha256": "98d164bc5c33176808c72894992ff614eb75b29ecab3ae5047b2a2f568f77623",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/setup/evaluation-weights.json",
+      "original_sha256": "dac0a6844a460c6a8d4ac8e861cffb9f027f17ae4b869f0d7bbde5fb325b02b1",
+      "published_sha256": "4be69bf6480f71b7c35cff1e2e32413d0f0f7dcbcb25e3d568f46912b7ce837b",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/setup/evaluator-validation/metrics.json",
+      "original_sha256": "91c8c1101e867a63a56a40670e0e0d52d05b943ee28f3c2801e7747be8dc7856",
+      "published_sha256": "bcac13231d0c5c8f393d2eaed46fc7beb0e2f27f17c3759fac48e1ca4c7f25eb",
+      "changed_for_publication": true
+    },
+    {
+      "path": "records/setup/nerfstudio-commit.txt",
+      "original_sha256": "76ca0ee397d5345d52e58cdc5dc2767ca980fb4fadbc4bcdddac5ef6955c4af6",
+      "published_sha256": "76ca0ee397d5345d52e58cdc5dc2767ca980fb4fadbc4bcdddac5ef6955c4af6",
+      "changed_for_publication": false
+    },
+    {
+      "path": "records/setup/pip-freeze.txt",
+      "original_sha256": "cb8f127dba7649c411c4c3f030943cd016d50e9b65e66e1c17c632a80089b8db",
+      "published_sha256": "cb8f127dba7649c411c4c3f030943cd016d50e9b65e66e1c17c632a80089b8db",
+      "changed_for_publication": false
+    },
+    {
+      "path": "references/README.md",
+      "original_sha256": "69845151830e8286200b26bdcda5d65863d65c2e3e16616b89d596b2c6a9c876",
+      "published_sha256": "69845151830e8286200b26bdcda5d65863d65c2e3e16616b89d596b2c6a9c876",
+      "changed_for_publication": false
+    },
+    {
+      "path": "references/references.bib",
+      "original_sha256": "d57bca1a2789bb81d2685bd0553b051a8de1e83b45a0c4d0442e541f3417bd1b",
+      "published_sha256": "d57bca1a2789bb81d2685bd0553b051a8de1e83b45a0c4d0442e541f3417bd1b",
+      "changed_for_publication": false
+    },
+    {
+      "path": "requirements-report.txt",
+      "published_sha256": "deedabb4d330d1bf0a213c0bc594ad765f91248be7e7ed0d3cae8f8a80286db5",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "scripts/00_system_dependencies.sh",
+      "original_sha256": "ada519259591981acd55962b89d793ca79f9c65dc54579f0c45d98a035988881",
+      "published_sha256": "7d42c8db89148601d661e41bcf5dfccd3d7bb786905819c841a4a38b916e2ef6",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/01_create_environment.sh",
+      "original_sha256": "4dc8f576ff5c702eb228b1f84b62c63455823cdfc9b4315b324d414a5af8a40c",
+      "published_sha256": "f56db429e91bef49f4df70b970dd395212ab69d59a305bb74f91fdf5409314c5",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/02_install_training.sh",
+      "original_sha256": "77836f331ee6fb5eb2ddbd5733fe2486e3e6904ee4a4a52ad928a121ff0f0bc8",
+      "published_sha256": "c3bd7df38f6e6822f5e52c598ffd21b93aaf65a2307d1fa1ec72395bce10e531",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/03_download_data.sh",
+      "original_sha256": "25bd8babf770bce554d38c5e073120715e9ba90a2fc7bb28470a4356e1dfbb60",
+      "published_sha256": "b57bcdd3a2c82e9562d965779718826ba269662dda03260d715b60888a551b44",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/04_verify_and_prepare.sh",
+      "original_sha256": "6afee66c40e6e280b1ad68b0326e40169bdd50c7e6ec477032410a51814bb68b",
+      "published_sha256": "a623f0d2c20b4019c122048cb6c8f4803a9676dd0619bc48dd4d296df69d7fc5",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/05_run_pilot.sh",
+      "original_sha256": "f4297fd97498e1ac98829cb3869f15d5e459cbeadb9335200b356f4d4bd029ae",
+      "published_sha256": "5f5cf66c6d3caf90e6a943ac6aee06718e184d0c16d48673e5f141b3c647faaf",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/06_run_experiments.sh",
+      "original_sha256": "81937b27b6ca8765b29182f704fe84e81acc6b9513263f802a6e0386262dc90c",
+      "published_sha256": "0cb0bf87ec3cb003cd18b9b7768b7e7f7d5ca54d1c9446f5345146c37fdbefd1",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/07_analyze_experiments.sh",
+      "original_sha256": "66d85bbe9f80dab46222c394e580f712a0785b576f6176213c304f8a666e48ba",
+      "published_sha256": "558c8a6121f96cb3f184e77a20a8b6e31250c91f025612b000d040730f885a90",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/analyze_experiments.py",
+      "original_sha256": "dcd6e54b81478d83b3fb8460a7290a5a8953465382ba906beb3fa31bb40eabf3",
+      "published_sha256": "dcd6e54b81478d83b3fb8460a7290a5a8953465382ba906beb3fa31bb40eabf3",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/build_course_report.py",
+      "original_sha256": "238419e13cdeece2f5833c3ab7ff1b4e8b4c2f786ee73314b7548b25f59ac568",
+      "published_sha256": "238419e13cdeece2f5833c3ab7ff1b4e8b4c2f786ee73314b7548b25f59ac568",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/check_cli.sh",
+      "original_sha256": "007571523f995831c9b366f2cb2347c9cfff90f1e20156027dc11a1f76c2ce2a",
+      "published_sha256": "cb4b79d4a1ed36185e6857e66cb146d41fa296bb06c27a85ddaa2f68daee35d3",
+      "changed_for_publication": true,
+      "reason": "portable launcher; original experimental commands remain in session.json"
+    },
+    {
+      "path": "scripts/download_eval_weights.py",
+      "original_sha256": "c42526babfe4e25352148f61c7baac582b245a903227d8cf4dc6fd42c73ede0b",
+      "published_sha256": "c42526babfe4e25352148f61c7baac582b245a903227d8cf4dc6fd42c73ede0b",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/download_lego.py",
+      "original_sha256": "b57d3880f6b60ed334029a618128de1584ea2192d957660e7b01b8880a120930",
+      "published_sha256": "b57d3880f6b60ed334029a618128de1584ea2192d957660e7b01b8880a120930",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/evaluate_views.py",
+      "original_sha256": "bbb0adba4f69e5c3f1e9f33c8a74d27d50fa0b2004d41077098e3e89fdaffbb2",
+      "published_sha256": "bbb0adba4f69e5c3f1e9f33c8a74d27d50fa0b2004d41077098e3e89fdaffbb2",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/plot_camera_splits.py",
+      "original_sha256": "0e556675e0dd20767d87ec3c58665caf6ffdf7bd5b9a3715c5d2bbc6d6e3f17a",
+      "published_sha256": "0e556675e0dd20767d87ec3c58665caf6ffdf7bd5b9a3715c5d2bbc6d6e3f17a",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/plot_results.py",
+      "published_sha256": "dcfc20d150de8cb48471debabc15d93a07a7fa7317af1e6f57991ae4a07981cd",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "scripts/prepare_splits.py",
+      "original_sha256": "042d697719a8fb87a4980102916716178130b40c583099842b51ee776b0469c8",
+      "published_sha256": "042d697719a8fb87a4980102916716178130b40c583099842b51ee776b0469c8",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/run_experiments.py",
+      "original_sha256": "2fa6cd13c13d8744597a1784fdc5d9341f7e8a951491081ee9c6fd208460c929",
+      "published_sha256": "2fa6cd13c13d8744597a1784fdc5d9341f7e8a951491081ee9c6fd208460c929",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/run_pilot.py",
+      "original_sha256": "0c6e24ef521782d8b4d95abe777f9f4442f393f501120239526d0161fbc2faa6",
+      "published_sha256": "0c6e24ef521782d8b4d95abe777f9f4442f393f501120239526d0161fbc2faa6",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/runtime.sh",
+      "published_sha256": "4636f52f5a6c0e22c106b10ae1ac6a4cf505e154664fbedc7f5fff085e68dda9",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    },
+    {
+      "path": "scripts/summarize_pilot.py",
+      "original_sha256": "4ceef0f01cf4db85ae1605278aa90bec3aafb7670c7fb31c928da8bbf98cb04f",
+      "published_sha256": "4ceef0f01cf4db85ae1605278aa90bec3aafb7670c7fb31c928da8bbf98cb04f",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/verify_environment.py",
+      "original_sha256": "9ae33af35600072cea62218e547f20fd130af07ec9798912f541435e7032c35f",
+      "published_sha256": "9ae33af35600072cea62218e547f20fd130af07ec9798912f541435e7032c35f",
+      "changed_for_publication": false
+    },
+    {
+      "path": "scripts/verify_published_results.py",
+      "published_sha256": "b2c8de98eb8724ce24d93dee32da02c5cf8021e931dd30afc3acd205967d67d3",
+      "original_sha256": null,
+      "changed_for_publication": true,
+      "reason": "new publication documentation or helper"
+    }
+  ]
+}

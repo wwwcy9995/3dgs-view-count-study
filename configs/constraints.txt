@@ -1,0 +1,21 @@
+# Compatibility baseline for Nerfstudio 1.1.5 and its gsplat 1.4.0 backend.
+# Torch/torchvision are installed separately from the official CUDA 11.8 index.
+torch==2.1.2+cu118
+torchvision==0.16.2+cu118
+gsplat==1.4.0+pt21cu118
+numpy==1.26.4
+torchmetrics==1.3.2
+tyro==0.8.14
+viser==0.2.7
+wandb==0.17.9
+comet-ml==3.44.4
+tensorboard==2.17.1
+protobuf==3.20.3
+open3d==0.18.0
+nuscenes-devkit==1.2.0
+websockets==12.0
+matplotlib==3.8.4
+scipy==1.12.0
+scikit-image==0.22.0
+Pillow==10.4.0
+setuptools<81

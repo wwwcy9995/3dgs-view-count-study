@@ -1,0 +1,46 @@
+[
+  {
+    "index": 0,
+    "source_image": "test/r_0.png",
+    "crop_xyxy": [
+      158,
+      134,
+      240,
+      269
+    ],
+    "policy": "central 40 percent of ground-truth foreground bounding box, identical crop for all groups"
+  },
+  {
+    "index": 50,
+    "source_image": "test/r_50.png",
+    "crop_xyxy": [
+      154,
+      153,
+      244,
+      263
+    ],
+    "policy": "central 40 percent of ground-truth foreground bounding box, identical crop for all groups"
+  },
+  {
+    "index": 100,
+    "source_image": "test/r_100.png",
+    "crop_xyxy": [
+      151,
+      134,
+      248,
+      224
+    ],
+    "policy": "central 40 percent of ground-truth foreground bounding box, identical crop for all groups"
+  },
+  {
+    "index": 150,
+    "source_image": "test/r_150.png",
+    "crop_xyxy": [
+      154,
+      153,
+      244,
+      261
+    ],
+    "policy": "central 40 percent of ground-truth foreground bounding box, identical crop for all groups"
+  }
+]

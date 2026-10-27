@@ -1,0 +1,13 @@
+{
+  "purpose": "LPIPS evaluation dependency; not a pretrained 3D scene",
+  "torch_home": "${PROJECT_ROOT}/.cache/torch",
+  "same_image_score": 0.0,
+  "alexnet_weights_url": "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth",
+  "files": [
+    {
+      "file": "alexnet-owt-7be5be79.pth",
+      "bytes": 244408911,
+      "sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+    }
+  ]
+}

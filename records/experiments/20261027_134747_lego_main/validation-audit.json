@@ -1,0 +1,15 @@
+{
+  "all_nine_stages_exit_zero": true,
+  "protocol_matches_frozen_copy": true,
+  "execution_sources_match_recorded_hashes": true,
+  "common_initialization_unchanged": true,
+  "verified_model_files": [
+    "outputs/experiments/20261027_134747_lego_main/lego-n010-s42/splatfacto/20261027_134747_lego_main_a1/nerfstudio_models/step-000029999.ckpt",
+    "outputs/experiments/20261027_134747_lego_main/lego-n010-s42/splatfacto/20261027_134747_lego_main_a1/export/splat.ply",
+    "outputs/experiments/20261027_134747_lego_main/lego-n020-s42/splatfacto/20261027_134747_lego_main_a1/nerfstudio_models/step-000029999.ckpt",
+    "outputs/experiments/20261027_134747_lego_main/lego-n020-s42/splatfacto/20261027_134747_lego_main_a1/export/splat.ply",
+    "outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/20261027_134747_lego_main_a1/nerfstudio_models/step-000029999.ckpt",
+    "outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/20261027_134747_lego_main_a1/export/splat.ply"
+  ],
+  "temporary_wake_request_released": true
+}

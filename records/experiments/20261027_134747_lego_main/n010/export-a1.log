@@ -1,0 +1,4 @@
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from 
+${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n010-s42/splatfacto/20261027_134747_lego_main_a1/nerf
+studio_models/step-000029999.ckpt

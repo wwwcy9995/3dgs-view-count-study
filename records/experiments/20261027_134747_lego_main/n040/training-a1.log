@@ -1,0 +1,844 @@
+──────────────────────────────────────────────────────── Config ────────────────────────────────────────────────────────
+TrainerConfig(
+    _target=<class 'nerfstudio.engine.trainer.Trainer'>,
+    output_dir=PosixPath('${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main'),
+    method_name='splatfacto',
+    experiment_name='lego-n040-s42',
+    project_name='nerfstudio-project',
+    timestamp='20261027_134747_lego_main_a1',
+    machine=MachineConfig(seed=42, num_devices=1, num_machines=1, machine_rank=0, dist_url='auto', device_type='cuda'),
+    logging=LoggingConfig(
+        relative_log_dir=PosixPath('.'),
+        steps_per_log=500,
+        max_buffer_size=20,
+        local_writer=LocalWriterConfig(
+            _target=<class 'nerfstudio.utils.writer.LocalWriter'>,
+            enable=True,
+            stats_to_track=(
+                <EventName.ITER_TRAIN_TIME: 'Train Iter (time)'>,
+                <EventName.TRAIN_RAYS_PER_SEC: 'Train Rays / Sec'>,
+                <EventName.CURR_TEST_PSNR: 'Test PSNR'>,
+                <EventName.VIS_RAYS_PER_SEC: 'Vis Rays / Sec'>,
+                <EventName.TEST_RAYS_PER_SEC: 'Test Rays / Sec'>,
+                <EventName.ETA: 'ETA (time)'>
+            ),
+            max_log_size=1
+        ),
+        profiler='basic'
+    ),
+    viewer=ViewerConfig(
+        relative_log_filename='viewer_log_filename.txt',
+        websocket_port=None,
+        websocket_port_default=7007,
+        websocket_host='0.0.0.0',
+        num_rays_per_chunk=32768,
+        max_num_display_images=512,
+        quit_on_train_completion=False,
+        image_format='jpeg',
+        jpeg_quality=75,
+        make_share_url=False,
+        camera_frustum_scale=0.1,
+        default_composite_depth=True
+    ),
+    pipeline=VanillaPipelineConfig(
+        _target=<class 'nerfstudio.pipelines.base_pipeline.VanillaPipeline'>,
+        datamanager=FullImageDatamanagerConfig(
+            _target=<class 'nerfstudio.data.datamanagers.full_images_datamanager.FullImageDatamanager'>,
+            data=None,
+            masks_on_gpu=False,
+            images_on_gpu=False,
+            dataparser=BlenderDataParserConfig(
+                _target=<class 'nerfstudio.data.dataparsers.blender_dataparser.Blender'>,
+                data=PosixPath('${PROJECT_ROOT}/data/splits/lego/n040'),
+                scale_factor=1.0,
+                alpha_color='white',
+                ply_path=PosixPath('${PROJECT_ROOT}/data/initialization/lego_random_seed42.ply')
+            ),
+            camera_res_scale_factor=0.5,
+            eval_num_images_to_sample_from=-1,
+            eval_num_times_to_repeat_images=-1,
+            eval_image_indices=(0,),
+            cache_images='cpu',
+            cache_images_type='uint8',
+            max_thread_workers=None,
+            train_cameras_sampling_strategy='random',
+            train_cameras_sampling_seed=42,
+            fps_reset_every=100
+        ),
+        model=SplatfactoModelConfig(
+            _target=<class 'nerfstudio.models.splatfacto.SplatfactoModel'>,
+            enable_collider=True,
+            collider_params={'near_plane': 2.0, 'far_plane': 6.0},
+            loss_coefficients={'rgb_loss_coarse': 1.0, 'rgb_loss_fine': 1.0},
+            eval_num_rays_per_chunk=4096,
+            prompt=None,
+            warmup_length=500,
+            refine_every=100,
+            resolution_schedule=3000,
+            background_color='white',
+            num_downscales=0,
+            cull_alpha_thresh=0.1,
+            cull_scale_thresh=0.5,
+            reset_alpha_every=30,
+            densify_grad_thresh=0.0008,
+            use_absgrad=True,
+            densify_size_thresh=0.01,
+            n_split_samples=2,
+            sh_degree_interval=1000,
+            cull_screen_size=0.15,
+            split_screen_size=0.05,
+            stop_screen_size_at=4000,
+            random_init=False,
+            num_random=50000,
+            random_scale=10.0,
+            ssim_lambda=0.2,
+            stop_split_at=15000,
+            sh_degree=3,
+            use_scale_regularization=False,
+            max_gauss_ratio=10.0,
+            output_depth_during_training=False,
+            rasterize_mode='classic',
+            camera_optimizer=CameraOptimizerConfig(
+                _target=<class 'nerfstudio.cameras.camera_optimizers.CameraOptimizer'>,
+                mode='off',
+                trans_l2_penalty=0.01,
+                rot_l2_penalty=0.001,
+                optimizer=None,
+                scheduler=None
+            ),
+            use_bilateral_grid=False,
+            grid_shape=(16, 16, 8),
+            color_corrected_metrics=False
+        )
+    ),
+    optimizers={
+        'means': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.00016,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': ExponentialDecaySchedulerConfig(
+                _target=<class 'nerfstudio.engine.schedulers.ExponentialDecayScheduler'>,
+                lr_pre_warmup=1e-08,
+                lr_final=1.6e-06,
+                warmup_steps=0,
+                max_steps=30000,
+                ramp='cosine'
+            )
+        },
+        'features_dc': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.0025,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': None
+        },
+        'features_rest': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.000125,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': None
+        },
+        'opacities': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.05,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': None
+        },
+        'scales': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.005,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': None
+        },
+        'quats': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.001,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': None
+        },
+        'camera_opt': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.0001,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': ExponentialDecaySchedulerConfig(
+                _target=<class 'nerfstudio.engine.schedulers.ExponentialDecayScheduler'>,
+                lr_pre_warmup=0,
+                lr_final=5e-07,
+                warmup_steps=1000,
+                max_steps=30000,
+                ramp='cosine'
+            )
+        },
+        'bilateral_grid': {
+            'optimizer': AdamOptimizerConfig(
+                _target=<class 'torch.optim.adam.Adam'>,
+                lr=0.002,
+                eps=1e-15,
+                max_norm=None,
+                weight_decay=0
+            ),
+            'scheduler': ExponentialDecaySchedulerConfig(
+                _target=<class 'nerfstudio.engine.schedulers.ExponentialDecayScheduler'>,
+                lr_pre_warmup=0,
+                lr_final=0.0001,
+                warmup_steps=1000,
+                max_steps=30000,
+                ramp='cosine'
+            )
+        }
+    },
+    vis='tensorboard',
+    data=None,
+    prompt=None,
+    relative_model_dir=PosixPath('nerfstudio_models'),
+    load_scheduler=True,
+    steps_per_save=5000,
+    steps_per_eval_batch=0,
+    steps_per_eval_image=0,
+    steps_per_eval_all_images=0,
+    max_num_iterations=30000,
+    mixed_precision=False,
+    use_grad_scaler=False,
+    save_only_latest_checkpoint=True,
+    load_dir=None,
+    load_step=None,
+    load_config=None,
+    load_checkpoint=None,
+    log_gradients=False,
+    gradient_accumulation_steps={},
+    start_paused=False
+)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[14:20:40] Saving config to:                                                                    experiment_config.py:136
+           ${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfac                         
+           to/20261027_134747_lego_main_a1/config.yml                                                                   
+           Saving checkpoints to:                                                                         trainer.py:142
+           ${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/2026102               
+           7_134747_lego_main_a1/nerfstudio_models                                                                      
+No Nerfstudio checkpoint to load, so training from scratch.
+logging events to: 
+${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/20261027_134747_lego_main_a1
+[14:20:44] Caching / undistorting train images                                            full_images_datamanager.py:230
+
+${ENV_DIR}/lib/python3.10/site-packages/torch/utils/cpp_extension.py:28: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import packaging  # type: ignore[attr-defined]
+${ENV_DIR}/lib/python3.10/site-packages/pytorch_msssim/ssim.py:48: UserWarning: Applied workaround for CuDNN issue, install nvrtc.so (Triggered internally at ../aten/src/ATen/native/cudnn/Conv_v8.cpp:80.)
+  out = conv(out, weight=win.transpose(2 + i, -1), stride=1, padding=0, groups=C)
+[14:20:46] Printing max of 1 lines. Set flag --logging.local-writer.max-log-size=0 to disable line         writer.py:449
+           wrapping.                                                                                                    
+Step (% Done)       Train Iter (time)    ETA (time)           
+--------------------------------------------------------------
+
+[2A[1K
+Step (% Done)       Train Iter (time)    ETA (time)            [0m
+-------------------------------------------------------------- [0m
+0 (0.00%)           2 s, 58.177 ms       17 h, 9 m, 5 s        [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+500 (1.67%)         9.511 ms             4 m, 40 s            16.98 M               [0m
+Step 600: 0 GSs duplicated, 9991 GSs split. Now having 19991 GSs.
+Step 600: 19491 GSs pruned. Now having 500 GSs.
+Step 700: 0 GSs duplicated, 497 GSs split. Now having 997 GSs.
+Step 700: 103 GSs pruned. Now having 894 GSs.
+Step 800: 0 GSs duplicated, 857 GSs split. Now having 1751 GSs.
+Step 800: 154 GSs pruned. Now having 1597 GSs.
+Step 900: 2 GSs duplicated, 1421 GSs split. Now having 3020 GSs.
+Step 900: 180 GSs pruned. Now having 2840 GSs.
+Step 1000: 12 GSs duplicated, 2286 GSs split. Now having 5138 GSs.
+Step 1000: 242 GSs pruned. Now having 4896 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+1000 (3.33%)        11.169 ms            5 m, 23 s            14.75 M               [0m
+Step 1100: 83 GSs duplicated, 3422 GSs split. Now having 8401 GSs.
+Step 1100: 300 GSs pruned. Now having 8101 GSs.
+Step 1200: 168 GSs duplicated, 4545 GSs split. Now having 12814 GSs.
+Step 1200: 311 GSs pruned. Now having 12503 GSs.
+Step 1300: 330 GSs duplicated, 4760 GSs split. Now having 17593 GSs.
+Step 1300: 367 GSs pruned. Now having 17226 GSs.
+Step 1400: 476 GSs duplicated, 4246 GSs split. Now having 21948 GSs.
+Step 1400: 376 GSs pruned. Now having 21572 GSs.
+Step 1500: 536 GSs duplicated, 3232 GSs split. Now having 25340 GSs.
+Step 1500: 411 GSs pruned. Now having 24929 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+1500 (5.00%)        12.099 ms            5 m, 44 s            13.50 M               [0m
+Step 1600: 521 GSs duplicated, 2393 GSs split. Now having 27843 GSs.
+Step 1600: 444 GSs pruned. Now having 27399 GSs.
+Step 1700: 473 GSs duplicated, 1927 GSs split. Now having 29799 GSs.
+Step 1700: 499 GSs pruned. Now having 29300 GSs.
+Step 1800: 448 GSs duplicated, 1535 GSs split. Now having 31283 GSs.
+Step 1800: 396 GSs pruned. Now having 30887 GSs.
+Step 1900: 372 GSs duplicated, 1096 GSs split. Now having 32355 GSs.
+Step 1900: 407 GSs pruned. Now having 31948 GSs.
+Step 2000: 300 GSs duplicated, 865 GSs split. Now having 33113 GSs.
+Step 2000: 342 GSs pruned. Now having 32771 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+2000 (6.67%)        11.343 ms            5 m, 17 s            14.77 M               [0m
+Step 2100: 271 GSs duplicated, 721 GSs split. Now having 33763 GSs.
+Step 2100: 292 GSs pruned. Now having 33471 GSs.
+Step 2200: 170 GSs duplicated, 556 GSs split. Now having 34197 GSs.
+Step 2200: 284 GSs pruned. Now having 33913 GSs.
+Step 2300: 155 GSs duplicated, 452 GSs split. Now having 34520 GSs.
+Step 2300: 223 GSs pruned. Now having 34297 GSs.
+Step 2400: 151 GSs duplicated, 412 GSs split. Now having 34860 GSs.
+Step 2400: 218 GSs pruned. Now having 34642 GSs.
+Step 2500: 110 GSs duplicated, 411 GSs split. Now having 35163 GSs.
+Step 2500: 202 GSs pruned. Now having 34961 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+2500 (8.33%)        11.707 ms            5 m, 21 s            14.14 M               [0m
+Step 2600: 123 GSs duplicated, 390 GSs split. Now having 35474 GSs.
+Step 2600: 182 GSs pruned. Now having 35292 GSs.
+Step 2700: 98 GSs duplicated, 285 GSs split. Now having 35675 GSs.
+Step 2700: 167 GSs pruned. Now having 35508 GSs.
+Step 2800: 107 GSs duplicated, 368 GSs split. Now having 35983 GSs.
+Step 2800: 179 GSs pruned. Now having 35804 GSs.
+Step 2900: 86 GSs duplicated, 295 GSs split. Now having 36185 GSs.
+Step 2900: 144 GSs pruned. Now having 36041 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+3000 (10.00%)       10.029 ms            4 m, 30 s            16.01 M               [0m
+Step 3200: 63 GSs duplicated, 1928 GSs split. Now having 38032 GSs.
+Step 3200: 547 GSs pruned. Now having 37485 GSs.
+Step 3300: 52 GSs duplicated, 358 GSs split. Now having 37895 GSs.
+Step 3300: 355 GSs pruned. Now having 37540 GSs.
+Step 3400: 56 GSs duplicated, 261 GSs split. Now having 37857 GSs.
+Step 3400: 201 GSs pruned. Now having 37656 GSs.
+Step 3500: 52 GSs duplicated, 216 GSs split. Now having 37924 GSs.
+Step 3500: 204 GSs pruned. Now having 37720 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+3500 (11.67%)       9.153 ms             4 m, 2 s             17.65 M               [0m
+Step 3600: 50 GSs duplicated, 234 GSs split. Now having 38004 GSs.
+Step 3600: 196 GSs pruned. Now having 37808 GSs.
+Step 3700: 41 GSs duplicated, 241 GSs split. Now having 38090 GSs.
+Step 3700: 166 GSs pruned. Now having 37924 GSs.
+Step 3800: 51 GSs duplicated, 204 GSs split. Now having 38179 GSs.
+Step 3800: 182 GSs pruned. Now having 37997 GSs.
+Step 3900: 40 GSs duplicated, 184 GSs split. Now having 38221 GSs.
+Step 3900: 161 GSs pruned. Now having 38060 GSs.
+Step 4000: 45 GSs duplicated, 25 GSs split. Now having 38130 GSs.
+Step 4000: 159 GSs pruned. Now having 37971 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+4000 (13.33%)       10.186 ms            4 m, 24 s            15.85 M               [0m
+Step 4100: 42 GSs duplicated, 20 GSs split. Now having 38033 GSs.
+Step 4100: 101 GSs pruned. Now having 37932 GSs.
+Step 4200: 45 GSs duplicated, 10 GSs split. Now having 37987 GSs.
+Step 4200: 80 GSs pruned. Now having 37907 GSs.
+Step 4300: 37 GSs duplicated, 9 GSs split. Now having 37953 GSs.
+Step 4300: 98 GSs pruned. Now having 37855 GSs.
+Step 4400: 47 GSs duplicated, 9 GSs split. Now having 37911 GSs.
+Step 4400: 77 GSs pruned. Now having 37834 GSs.
+Step 4500: 37 GSs duplicated, 16 GSs split. Now having 37887 GSs.
+Step 4500: 91 GSs pruned. Now having 37796 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+4500 (15.00%)       9.452 ms             4 m, 1 s             17.09 M               [0m
+Step 4600: 40 GSs duplicated, 9 GSs split. Now having 37845 GSs.
+Step 4600: 76 GSs pruned. Now having 37769 GSs.
+Step 4700: 39 GSs duplicated, 4 GSs split. Now having 37812 GSs.
+Step 4700: 89 GSs pruned. Now having 37723 GSs.
+Step 4800: 39 GSs duplicated, 20 GSs split. Now having 37782 GSs.
+Step 4800: 61 GSs pruned. Now having 37721 GSs.
+Step 4900: 41 GSs duplicated, 10 GSs split. Now having 37772 GSs.
+Step 4900: 73 GSs pruned. Now having 37699 GSs.
+Step 5000: 26 GSs duplicated, 6 GSs split. Now having 37731 GSs.
+Step 5000: 76 GSs pruned. Now having 37655 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+5000 (16.67%)       9.649 ms             4 m, 1 s             16.95 M               [0m
+Step 5100: 39 GSs duplicated, 9 GSs split. Now having 37703 GSs.
+Step 5100: 59 GSs pruned. Now having 37644 GSs.
+Step 5200: 28 GSs duplicated, 6 GSs split. Now having 37678 GSs.
+Step 5200: 69 GSs pruned. Now having 37609 GSs.
+Step 5300: 33 GSs duplicated, 5 GSs split. Now having 37647 GSs.
+Step 5300: 63 GSs pruned. Now having 37584 GSs.
+Step 5400: 29 GSs duplicated, 13 GSs split. Now having 37626 GSs.
+Step 5400: 53 GSs pruned. Now having 37573 GSs.
+Step 5500: 29 GSs duplicated, 7 GSs split. Now having 37609 GSs.
+Step 5500: 49 GSs pruned. Now having 37560 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+5500 (18.33%)       11.042 ms            4 m, 30 s            15.15 M               [0m
+Step 5600: 31 GSs duplicated, 4 GSs split. Now having 37595 GSs.
+Step 5600: 58 GSs pruned. Now having 37537 GSs.
+Step 5700: 31 GSs duplicated, 7 GSs split. Now having 37575 GSs.
+Step 5700: 71 GSs pruned. Now having 37504 GSs.
+Step 5800: 30 GSs duplicated, 15 GSs split. Now having 37549 GSs.
+Step 5800: 49 GSs pruned. Now having 37500 GSs.
+Step 5900: 34 GSs duplicated, 7 GSs split. Now having 37541 GSs.
+Step 5900: 62 GSs pruned. Now having 37479 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+6000 (20.00%)       10.206 ms            4 m, 4 s             15.99 M               [0m
+Step 6200: 16 GSs duplicated, 12 GSs split. Now having 37507 GSs.
+Step 6200: 189 GSs pruned. Now having 37318 GSs.
+Step 6300: 29 GSs duplicated, 11 GSs split. Now having 37358 GSs.
+Step 6300: 38 GSs pruned. Now having 37320 GSs.
+Step 6400: 22 GSs duplicated, 4 GSs split. Now having 37346 GSs.
+Step 6400: 48 GSs pruned. Now having 37298 GSs.
+Step 6500: 28 GSs duplicated, 6 GSs split. Now having 37332 GSs.
+Step 6500: 50 GSs pruned. Now having 37282 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+6500 (21.67%)       9.383 ms             3 m, 40 s            17.30 M               [0m
+Step 6600: 23 GSs duplicated, 5 GSs split. Now having 37310 GSs.
+Step 6600: 40 GSs pruned. Now having 37270 GSs.
+Step 6700: 26 GSs duplicated, 5 GSs split. Now having 37301 GSs.
+Step 6700: 40 GSs pruned. Now having 37261 GSs.
+Step 6800: 28 GSs duplicated, 6 GSs split. Now having 37295 GSs.
+Step 6800: 48 GSs pruned. Now having 37247 GSs.
+Step 6900: 26 GSs duplicated, 5 GSs split. Now having 37278 GSs.
+Step 6900: 42 GSs pruned. Now having 37236 GSs.
+Step 7000: 25 GSs duplicated, 5 GSs split. Now having 37266 GSs.
+Step 7000: 34 GSs pruned. Now having 37232 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+7000 (23.33%)       10.871 ms            4 m, 10 s            15.02 M               [0m
+Step 7100: 26 GSs duplicated, 5 GSs split. Now having 37263 GSs.
+Step 7100: 42 GSs pruned. Now having 37221 GSs.
+Step 7200: 22 GSs duplicated, 8 GSs split. Now having 37251 GSs.
+Step 7200: 38 GSs pruned. Now having 37213 GSs.
+Step 7300: 21 GSs duplicated, 1 GSs split. Now having 37235 GSs.
+Step 7300: 29 GSs pruned. Now having 37206 GSs.
+Step 7400: 22 GSs duplicated, 4 GSs split. Now having 37232 GSs.
+Step 7400: 22 GSs pruned. Now having 37210 GSs.
+Step 7500: 22 GSs duplicated, 4 GSs split. Now having 37236 GSs.
+Step 7500: 33 GSs pruned. Now having 37203 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+7500 (25.00%)       10.618 ms            3 m, 58 s            15.36 M               [0m
+Step 7600: 24 GSs duplicated, 5 GSs split. Now having 37232 GSs.
+Step 7600: 24 GSs pruned. Now having 37208 GSs.
+Step 7700: 29 GSs duplicated, 4 GSs split. Now having 37241 GSs.
+Step 7700: 39 GSs pruned. Now having 37202 GSs.
+Step 7800: 17 GSs duplicated, 3 GSs split. Now having 37222 GSs.
+Step 7800: 35 GSs pruned. Now having 37187 GSs.
+Step 7900: 21 GSs duplicated, 2 GSs split. Now having 37210 GSs.
+Step 7900: 33 GSs pruned. Now having 37177 GSs.
+Step 8000: 26 GSs duplicated, 6 GSs split. Now having 37209 GSs.
+Step 8000: 34 GSs pruned. Now having 37175 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+8000 (26.67%)       10.537 ms            3 m, 51 s            15.34 M               [0m
+Step 8100: 21 GSs duplicated, 3 GSs split. Now having 37199 GSs.
+Step 8100: 29 GSs pruned. Now having 37170 GSs.
+Step 8200: 26 GSs duplicated, 18 GSs split. Now having 37214 GSs.
+Step 8200: 42 GSs pruned. Now having 37172 GSs.
+Step 8300: 21 GSs duplicated, 4 GSs split. Now having 37197 GSs.
+Step 8300: 36 GSs pruned. Now having 37161 GSs.
+Step 8400: 23 GSs duplicated, 10 GSs split. Now having 37194 GSs.
+Step 8400: 33 GSs pruned. Now having 37161 GSs.
+Step 8500: 20 GSs duplicated, 7 GSs split. Now having 37188 GSs.
+Step 8500: 39 GSs pruned. Now having 37149 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+8500 (28.33%)       9.801 ms             3 m, 30 s            16.49 M               [0m
+Step 8600: 20 GSs duplicated, 4 GSs split. Now having 37173 GSs.
+Step 8600: 30 GSs pruned. Now having 37143 GSs.
+Step 8700: 22 GSs duplicated, 2 GSs split. Now having 37167 GSs.
+Step 8700: 25 GSs pruned. Now having 37142 GSs.
+Step 8800: 22 GSs duplicated, 1 GSs split. Now having 37165 GSs.
+Step 8800: 37 GSs pruned. Now having 37128 GSs.
+Step 8900: 20 GSs duplicated, 5 GSs split. Now having 37153 GSs.
+Step 8900: 29 GSs pruned. Now having 37124 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+9000 (30.00%)       9.488 ms             3 m, 19 s            16.95 M               [0m
+Step 9200: 20 GSs duplicated, 11 GSs split. Now having 37155 GSs.
+Step 9200: 97 GSs pruned. Now having 37058 GSs.
+Step 9300: 21 GSs duplicated, 6 GSs split. Now having 37085 GSs.
+Step 9300: 25 GSs pruned. Now having 37060 GSs.
+Step 9400: 16 GSs duplicated, 4 GSs split. Now having 37080 GSs.
+Step 9400: 22 GSs pruned. Now having 37058 GSs.
+Step 9500: 19 GSs duplicated, 0 GSs split. Now having 37077 GSs.
+Step 9500: 25 GSs pruned. Now having 37052 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+9500 (31.67%)       9.113 ms             3 m, 6 s             17.65 M               [0m
+Step 9600: 21 GSs duplicated, 5 GSs split. Now having 37078 GSs.
+Step 9600: 22 GSs pruned. Now having 37056 GSs.
+Step 9700: 19 GSs duplicated, 3 GSs split. Now having 37078 GSs.
+Step 9700: 31 GSs pruned. Now having 37047 GSs.
+Step 9800: 20 GSs duplicated, 2 GSs split. Now having 37069 GSs.
+Step 9800: 20 GSs pruned. Now having 37049 GSs.
+Step 9900: 17 GSs duplicated, 3 GSs split. Now having 37069 GSs.
+Step 9900: 28 GSs pruned. Now having 37041 GSs.
+Step 10000: 21 GSs duplicated, 2 GSs split. Now having 37064 GSs.
+Step 10000: 31 GSs pruned. Now having 37033 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+10000 (33.33%)      10.455 ms            3 m, 29 s            15.67 M               [0m
+Step 10100: 23 GSs duplicated, 2 GSs split. Now having 37058 GSs.
+Step 10100: 25 GSs pruned. Now having 37033 GSs.
+Step 10200: 18 GSs duplicated, 3 GSs split. Now having 37054 GSs.
+Step 10200: 27 GSs pruned. Now having 37027 GSs.
+Step 10300: 17 GSs duplicated, 1 GSs split. Now having 37045 GSs.
+Step 10300: 27 GSs pruned. Now having 37018 GSs.
+Step 10400: 24 GSs duplicated, 4 GSs split. Now having 37046 GSs.
+Step 10400: 24 GSs pruned. Now having 37022 GSs.
+Step 10500: 18 GSs duplicated, 0 GSs split. Now having 37040 GSs.
+Step 10500: 28 GSs pruned. Now having 37012 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+10500 (35.00%)      9.445 ms             3 m, 4 s             17.12 M               [0m
+Step 10600: 19 GSs duplicated, 6 GSs split. Now having 37037 GSs.
+Step 10600: 24 GSs pruned. Now having 37013 GSs.
+Step 10700: 21 GSs duplicated, 5 GSs split. Now having 37039 GSs.
+Step 10700: 42 GSs pruned. Now having 36997 GSs.
+Step 10800: 17 GSs duplicated, 2 GSs split. Now having 37016 GSs.
+Step 10800: 17 GSs pruned. Now having 36999 GSs.
+Step 10900: 19 GSs duplicated, 3 GSs split. Now having 37021 GSs.
+Step 10900: 17 GSs pruned. Now having 37004 GSs.
+Step 11000: 22 GSs duplicated, 1 GSs split. Now having 37027 GSs.
+Step 11000: 41 GSs pruned. Now having 36986 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+11000 (36.67%)      9.701 ms             3 m, 4 s             16.71 M               [0m
+Step 11100: 23 GSs duplicated, 3 GSs split. Now having 37012 GSs.
+Step 11100: 25 GSs pruned. Now having 36987 GSs.
+Step 11200: 11 GSs duplicated, 5 GSs split. Now having 37003 GSs.
+Step 11200: 24 GSs pruned. Now having 36979 GSs.
+Step 11300: 19 GSs duplicated, 1 GSs split. Now having 36999 GSs.
+Step 11300: 22 GSs pruned. Now having 36977 GSs.
+Step 11400: 18 GSs duplicated, 5 GSs split. Now having 37000 GSs.
+Step 11400: 17 GSs pruned. Now having 36983 GSs.
+Step 11500: 17 GSs duplicated, 2 GSs split. Now having 37002 GSs.
+Step 11500: 30 GSs pruned. Now having 36972 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+11500 (38.33%)      11.733 ms            3 m, 37 s            14.11 M               [0m
+Step 11600: 17 GSs duplicated, 1 GSs split. Now having 36990 GSs.
+Step 11600: 19 GSs pruned. Now having 36971 GSs.
+Step 11700: 20 GSs duplicated, 0 GSs split. Now having 36991 GSs.
+Step 11700: 22 GSs pruned. Now having 36969 GSs.
+Step 11800: 10 GSs duplicated, 0 GSs split. Now having 36979 GSs.
+Step 11800: 22 GSs pruned. Now having 36957 GSs.
+Step 11900: 19 GSs duplicated, 3 GSs split. Now having 36979 GSs.
+Step 11900: 9 GSs pruned. Now having 36970 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+12000 (40.00%)      10.071 ms            3 m, 1 s             15.98 M               [0m
+Step 12200: 11 GSs duplicated, 11 GSs split. Now having 36992 GSs.
+Step 12200: 72 GSs pruned. Now having 36920 GSs.
+Step 12300: 15 GSs duplicated, 1 GSs split. Now having 36936 GSs.
+Step 12300: 17 GSs pruned. Now having 36919 GSs.
+Step 12400: 14 GSs duplicated, 0 GSs split. Now having 36933 GSs.
+Step 12400: 15 GSs pruned. Now having 36918 GSs.
+Step 12500: 13 GSs duplicated, 1 GSs split. Now having 36932 GSs.
+Step 12500: 20 GSs pruned. Now having 36912 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+12500 (41.67%)      11.954 ms            3 m, 29 s            13.70 M               [0m
+Step 12600: 15 GSs duplicated, 10 GSs split. Now having 36937 GSs.
+Step 12600: 24 GSs pruned. Now having 36913 GSs.
+Step 12700: 14 GSs duplicated, 5 GSs split. Now having 36932 GSs.
+Step 12700: 17 GSs pruned. Now having 36915 GSs.
+Step 12800: 14 GSs duplicated, 4 GSs split. Now having 36933 GSs.
+Step 12800: 12 GSs pruned. Now having 36921 GSs.
+Step 12900: 12 GSs duplicated, 0 GSs split. Now having 36933 GSs.
+Step 12900: 21 GSs pruned. Now having 36912 GSs.
+Step 13000: 18 GSs duplicated, 2 GSs split. Now having 36932 GSs.
+Step 13000: 17 GSs pruned. Now having 36915 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+13000 (43.33%)      10.621 ms            3 m, 0 s             15.33 M               [0m
+Step 13100: 11 GSs duplicated, 3 GSs split. Now having 36929 GSs.
+Step 13100: 18 GSs pruned. Now having 36911 GSs.
+Step 13200: 20 GSs duplicated, 1 GSs split. Now having 36932 GSs.
+Step 13200: 15 GSs pruned. Now having 36917 GSs.
+Step 13300: 14 GSs duplicated, 2 GSs split. Now having 36933 GSs.
+Step 13300: 14 GSs pruned. Now having 36919 GSs.
+Step 13400: 14 GSs duplicated, 0 GSs split. Now having 36933 GSs.
+Step 13400: 25 GSs pruned. Now having 36908 GSs.
+Step 13500: 17 GSs duplicated, 0 GSs split. Now having 36925 GSs.
+Step 13500: 24 GSs pruned. Now having 36901 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+13500 (45.00%)      9.627 ms             2 m, 38 s            16.75 M               [0m
+Step 13600: 17 GSs duplicated, 4 GSs split. Now having 36922 GSs.
+Step 13600: 19 GSs pruned. Now having 36903 GSs.
+Step 13700: 15 GSs duplicated, 5 GSs split. Now having 36923 GSs.
+Step 13700: 22 GSs pruned. Now having 36901 GSs.
+Step 13800: 18 GSs duplicated, 3 GSs split. Now having 36922 GSs.
+Step 13800: 23 GSs pruned. Now having 36899 GSs.
+Step 13900: 14 GSs duplicated, 1 GSs split. Now having 36914 GSs.
+Step 13900: 13 GSs pruned. Now having 36901 GSs.
+Step 14000: 16 GSs duplicated, 1 GSs split. Now having 36918 GSs.
+Step 14000: 22 GSs pruned. Now having 36896 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+14000 (46.67%)      10.112 ms            2 m, 41 s            16.02 M               [0m
+Step 14100: 14 GSs duplicated, 2 GSs split. Now having 36912 GSs.
+Step 14100: 20 GSs pruned. Now having 36892 GSs.
+Step 14200: 13 GSs duplicated, 2 GSs split. Now having 36907 GSs.
+Step 14200: 19 GSs pruned. Now having 36888 GSs.
+Step 14300: 19 GSs duplicated, 1 GSs split. Now having 36908 GSs.
+Step 14300: 21 GSs pruned. Now having 36887 GSs.
+Step 14400: 11 GSs duplicated, 4 GSs split. Now having 36902 GSs.
+Step 14400: 17 GSs pruned. Now having 36885 GSs.
+Step 14500: 18 GSs duplicated, 3 GSs split. Now having 36906 GSs.
+Step 14500: 20 GSs pruned. Now having 36886 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+14500 (48.33%)      10.622 ms            2 m, 44 s            15.51 M               [0m
+Step 14600: 14 GSs duplicated, 1 GSs split. Now having 36901 GSs.
+Step 14600: 18 GSs pruned. Now having 36883 GSs.
+Step 14700: 12 GSs duplicated, 3 GSs split. Now having 36898 GSs.
+Step 14700: 18 GSs pruned. Now having 36880 GSs.
+Step 14800: 19 GSs duplicated, 2 GSs split. Now having 36901 GSs.
+Step 14800: 19 GSs pruned. Now having 36882 GSs.
+Step 14900: 11 GSs duplicated, 3 GSs split. Now having 36896 GSs.
+Step 14900: 18 GSs pruned. Now having 36878 GSs.
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+15000 (50.00%)      9.902 ms             2 m, 28 s            16.21 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+15500 (51.67%)      8.925 ms             2 m, 9 s             17.98 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+16000 (53.33%)      9.453 ms             2 m, 12 s            17.07 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+16500 (55.00%)      9.354 ms             2 m, 6 s             17.29 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+17000 (56.67%)      13.349 ms            2 m, 53 s            12.17 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+17500 (58.33%)      12.816 ms            2 m, 40 s            12.62 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+18000 (60.00%)      13.419 ms            2 m, 41 s            12.09 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+18500 (61.67%)      13.287 ms            2 m, 32 s            12.35 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+19000 (63.33%)      12.372 ms            2 m, 16 s            13.57 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+19500 (65.00%)      11.359 ms            1 m, 59 s            14.27 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+20000 (66.67%)      9.974 ms             1 m, 39 s            16.13 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+20500 (68.33%)      11.181 ms            1 m, 46 s            14.56 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+21000 (70.00%)      10.787 ms            1 m, 37 s            15.01 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+21500 (71.67%)      10.260 ms            1 m, 27 s            15.69 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+22000 (73.33%)      10.481 ms            1 m, 23 s            15.48 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+22500 (75.00%)      9.659 ms             1 m, 12 s            16.71 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+23000 (76.67%)      10.228 ms            1 m, 11 s            15.82 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+23500 (78.33%)      10.241 ms            1 m, 6 s             15.66 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+24000 (80.00%)      11.219 ms            1 m, 7 s             14.36 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+24500 (81.67%)      10.958 ms            1 m, 0 s             14.74 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+25000 (83.33%)      11.209 ms            56 s, 43.625 ms      14.34 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+25500 (85.00%)      10.736 ms            48 s, 310.179 ms     14.97 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+26000 (86.67%)      10.621 ms            42 s, 484.045 ms     15.12 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+26500 (88.33%)      10.518 ms            36 s, 812.425 ms     15.32 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+27000 (90.00%)      10.404 ms            31 s, 211.829 ms     15.43 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+27500 (91.67%)      9.443 ms             23 s, 606.807 ms     16.98 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+28000 (93.33%)      9.493 ms             18 s, 985.534 ms     16.96 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+28500 (95.00%)      8.777 ms             13 s, 165.373 ms     18.28 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+29000 (96.67%)      9.415 ms             9 s, 415.329 ms      17.17 M               [0m
+
+[3A[1K
+Step (% Done)       Train Iter (time)    ETA (time)           Train Rays / Sec      [0m
+----------------------------------------------------------------------------------- [0m
+29500 (98.33%)      10.187 ms            5 s, 93.676 ms       15.88 M               [0m
+
+[3A[1K
+Step (% Done)        [0m
+-------------------- [0m
+29999 (100.00%)      [0m
+╭────────────────────────────────────────────── 🎉 Training Finished 🎉 ───────────────────────────────────────────────╮
+│                        ╷                                                                                             │
+│   Config File          │ ${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/2…   │
+│   Checkpoint Directory │ ${PROJECT_ROOT}/outputs/experiments/20261027_134747_lego_main/lego-n040-s42/splatfacto/2…   │
+│                        ╵                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Printing profiling stats, from longest to shortest duration in seconds
+Trainer.train_iteration: 0.0096              
+VanillaPipeline.get_train_loss_dict: 0.0054              
+Trainer.eval_iteration: 0.0000              

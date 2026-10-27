@@ -1,0 +1,19 @@
+{
+  "scope": "pilot_validation",
+  "experiment_name": "lego-pilot-10",
+  "method_name": "splatfacto",
+  "checkpoint": "${PROJECT_ROOT}/outputs/pilot/lego-pilot-10/splatfacto/20261026_231955/nerfstudio_models/step-000000999.ckpt",
+  "step": 999,
+  "image_count": 8,
+  "results": {
+    "psnr": 22.42875862121582,
+    "psnr_std": 0.748392641544342,
+    "ssim": 0.8303054571151733,
+    "ssim_std": 0.01973501406610012,
+    "lpips": 0.17477914690971375,
+    "lpips_std": 0.01556194294244051
+  },
+  "elapsed_seconds_including_image_writes": 1.6022916039999995,
+  "standard_deviation_scope": "across images, not repeated training runs",
+  "evaluator": "Nerfstudio model metrics on float images; no color correction; white background"
+}

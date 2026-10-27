@@ -1,0 +1,22 @@
+# Data and trained models are downloaded/regenerated, not published.
+/data/
+/external/
+/outputs/
+/.cache/
+/tmp/
+/local/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+.venv/
+*.ckpt
+*.pth
+*.pt
+*.ply
+*.zip
+*.vhdx
+.idea/
+.vscode/
+~$*

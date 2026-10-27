@@ -1,0 +1,16 @@
+{
+  "report": "output\\report\\训练视角数量与3DGS新视角合成_课程报告.docx",
+  "experiment_run": "20261027_134747_lego_main",
+  "sources": {
+    "records\\experiments\\20261027_134747_lego_main\\summary.json": "6ecbabdf1b2ec36d3426a01c3409b8d19278fa84bc0839c3a545d7bb22350ee9",
+    "records\\experiments\\20261027_134747_lego_main\\session.json": "954eab7f2e9adeb271a0a765ee6bb861941d222a60d5ed664fbc777b3cda5126",
+    "records\\data\\camera-coverage.png": "c329fb98096ec827c47176b7ff4755f478211a0836f2bc56f3a3ea24d71f26ab",
+    "records\\experiments\\20261027_134747_lego_main\\figures\\quality-vs-views.png": "44cd229598211b8167a59fdd9b5dcf312f2377a88a5f369933a2783bc076edaf",
+    "records\\experiments\\20261027_134747_lego_main\\figures\\test-view-0000.png": "a6fcb8e481c4c91dbe9a17a6b4a1aba118618efeb3ffaa0ac7f74a24a9f3ceb4",
+    "records\\experiments\\20261027_134747_lego_main\\figures\\test-view-0100.png": "e66c26f1623d3190f07c697cff27303093c991227d7c7b3cd74057f1458eee57"
+  },
+  "requested_format": "docx",
+  "student_name_and_id": "left blank as requested",
+  "created_from_real_results": true,
+  "report_sha256": "c6c6ae19b6d0e5aacc2b0b2fb23393b26ec1a21741edf9eb33c616ee039d1cf4"
+}
