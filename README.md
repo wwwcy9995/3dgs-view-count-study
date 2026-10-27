@@ -1,5 +1,7 @@
 # 训练视角数量对 3D Gaussian Splatting 新视角合成质量的影响
 
+配套仓库：https://github.com/wwwwwwcy/3dgs-view-count-study
+
 深度学习课程设计。基于已有方法开展小规模实验研究，实际使用 **Nerfstudio Splatfacto 1.1.5 / gsplat 1.4.0**，不是原论文 INRIA 训练实现，也没有复现 FSGS 或提出新算法。
 
 研究问题：在已知相机参数、相同初始化和固定训练步数下，10、20、40 个训练视角如何影响同一 Lego 场景的未见视角渲染？哪些细节更容易失真？
@@ -70,7 +72,7 @@ python scripts/plot_results.py
 
 上游 Nerfstudio 固定提交 `6b60855003011b2ca23c2fe3f8e2ca6314c69924`；安装脚本核对该提交。训练依赖约束在 `configs/constraints.txt`，原环境审计清单在 `records/setup/`。审计文件中的 `${ENV_DIR}` 等是历史路径的脱敏占位符，不用于直接安装或恢复训练。
 
-重新生成 Word 另需 `requirements-report.txt` 中的依赖，然后运行 `python scripts/build_course_report.py`。最终报告的署名留空，仓库创建后需在报告首页补入实际链接。
+重新生成 Word 另需 `requirements-report.txt` 中的依赖，然后运行 `python scripts/build_course_report.py`。报告署名按要求留空，首页已列出配套仓库地址。
 
 ## 文件与溯源
 

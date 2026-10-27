@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-27T15:27:32.473987+08:00",
+  "checked_at": "2026-10-28T00:10:04.716838+08:00",
   "report": "output\\report\\\u8bad\u7ec3\u89c6\u89d2\u6570\u91cf\u4e0e3DGS\u65b0\u89c6\u89d2\u5408\u6210_\u8bfe\u7a0b\u62a5\u544a.docx",
-  "sha256": "c6c6ae19b6d0e5aacc2b0b2fb23393b26ec1a21741edf9eb33c616ee039d1cf4",
+  "sha256": "661b4f47a646291a78146078c07a3e790e7a33380e1cc8d96988a3c32ba8612f",
   "page_count_in_native_word": 6,
   "all_six_page_pngs_visually_reviewed": true,
   "render_backend": "native Microsoft Word export + packaged render_docx.py rasterization",
@@ -12,5 +12,6 @@
   "native_editable_equations": 1,
   "only_deliverable_format": "DOCX",
   "email_sent": false,
-  "github_uploaded": false
+  "github_uploaded": false,
+  "repository_url": "https://github.com/wwwwwwcy/3dgs-view-count-study"
 }

@@ -18,6 +18,7 @@ from docx.oxml.ns import qn
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[1]
 RUN = "20261027_134747_lego_main"
+REPOSITORY_URL = "https://github.com/wwwwwwcy/3dgs-view-count-study"
 RECORDS = ROOT / "records/experiments" / RUN
 OUT = ROOT / "output/report"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -190,6 +191,16 @@ p = doc.add_paragraph("训练视角数量对 3D Gaussian Splatting\n新视角合
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 para("深度学习课程设计　2026 年秋季", first=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=10, after=5)
 para("学号：________________　姓名：________________", first=False, align=WD_ALIGN_PARAGRAPH.CENTER, after=10)
+link_paragraph = para("代码与实验记录：", first=False, align=WD_ALIGN_PARAGRAPH.CENTER, size=9.5, after=7)
+link = OxmlElement("w:hyperlink")
+link.set(qn("r:id"), doc.part.relate_to(REPOSITORY_URL, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink", is_external=True))
+link_run = OxmlElement("w:r")
+link_properties = OxmlElement("w:rPr")
+link_size = OxmlElement("w:sz"); link_size.set(qn("w:val"), "19"); link_properties.append(link_size)
+link_fonts = OxmlElement("w:rFonts"); link_fonts.set(qn("w:ascii"), "Times New Roman"); link_fonts.set(qn("w:hAnsi"), "Times New Roman"); link_properties.append(link_fonts)
+link_run.append(link_properties)
+link_text = OxmlElement("w:t"); link_text.text = REPOSITORY_URL; link_run.append(link_text)
+link.append(link_run); link_paragraph._p.append(link)
 para("摘要", first=False, bold=True, after=3)
 para("本文研究已知相机参数条件下，训练视角数量对 3D Gaussian Splatting 新视角合成质量的影响。基于 Nerfstudio 的 Splatfacto，在公开 NeRF Synthetic Lego 场景上构造 10、20、40 个视角的嵌套训练集，共用随机初始化点云，以相同分辨率和 30000 步预算训练，并在固定 200 个测试视角上评估。三组平均 PSNR 分别为 25.8787、30.3059、34.6534 dB，SSIM 和 LPIPS 也随视角增加而改善。对照图显示，稀疏组更容易出现镂空区域误填、凸点纹理模糊和边缘伪影。结论仅针对本次单场景、单种子实验，不代表每个测试视角都会改善。", size=10.5, first=False, after=5)
 para("关键词：3D Gaussian Splatting；Splatfacto；训练视角数量；新视角合成", size=10, first=False, after=5)
@@ -285,7 +296,7 @@ para("固定 30000 步使预算口径清楚，但训练图数量增加时，每�
 heading("7.2 结论", 2)
 para("在已知相机、共同随机点云初始化、400×400 和相同 30000 步条件下，本次 Splatfacto 的 10、20、40 训练视角实验得到逐步提高的平均测试质量。40 视角相对 10 视角平均 PSNR 提升 8.7747 dB，局部外观更接近真实图；部分单张测试图仍有退步。该结论是一次受控的小规模实验观察，不是对任意场景的普遍保证。")
 heading("8 代码来源与工具使用说明")
-para("场景数据来自 NeRF 作者公开数据；训练方法基于 Nerfstudio Splatfacto 和 gsplat 开源实现，按上游许可证使用并记录版本，不将其称为自行提出的算法。项目新增数据划分、共同初始化、实验调度、指标汇总及绘图脚本。使用 OpenAI Codex 协助环境排错、脚本编写、结果整理与文字编辑；文中指标及图像均来自本机实际运行。代码和实验记录已保存在本地项目，尚未上传 GitHub。", size=10.5)
+para("场景数据来自 NeRF 作者公开数据；训练方法基于 Nerfstudio Splatfacto 和 gsplat 开源实现，按上游许可证使用并记录版本，不将其称为自行提出的算法。项目新增数据划分、共同初始化、实验调度、指标汇总及绘图脚本。使用 OpenAI Codex 协助环境排错、脚本编写、结果整理与文字编辑；文中指标及图像均来自本机实际运行。项目代码与实验记录整理为配套仓库，地址见首页。", size=10.5)
 
 heading("参考文献")
 refs = [
@@ -311,6 +322,7 @@ provenance = {
     "requested_format": "docx",
     "student_name_and_id": "left blank as requested",
     "created_from_real_results": True,
+    "repository_url": REPOSITORY_URL,
 }
 for path in [RECORDS / "summary.json", RECORDS / "session.json", ROOT / "records/data/camera-coverage.png",
              RECORDS / "figures/quality-vs-views.png", RECORDS / "figures/test-view-0000.png", RECORDS / "figures/test-view-0100.png"]:
