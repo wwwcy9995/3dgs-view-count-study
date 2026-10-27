@@ -66,8 +66,8 @@
     {
       "path": "output/report/report-provenance.json",
       "original_sha256": "2365f77049c594aabed7345d082aedd162e42e093e58be3effe2408cf6042d26",
-      "published_sha256": "2365f77049c594aabed7345d082aedd162e42e093e58be3effe2408cf6042d26",
-      "changed_for_publication": false
+      "published_sha256": "2cb01e6d63dd0a1caa4e31888b568bedd0e6da0c85fd841df92db3c54a6991c0",
+      "changed_for_publication": true
     },
     {
       "path": "output/report/report-qa.json",
