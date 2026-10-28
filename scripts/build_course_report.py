@@ -18,7 +18,7 @@ from docx.oxml.ns import qn
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[1]
 RUN = "20261027_134747_lego_main"
-REPOSITORY_URL = "https://github.com/wwwwwwcy/3dgs-view-count-study"
+REPOSITORY_URL = "https://github.com/wwwcy9995/3dgs-view-count-study"
 RECORDS = ROOT / "records/experiments" / RUN
 OUT = ROOT / "output/report"
 OUT.mkdir(parents=True, exist_ok=True)

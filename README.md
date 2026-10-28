@@ -1,6 +1,6 @@
 # 训练视角数量对 3D Gaussian Splatting 新视角合成质量的影响
 
-配套仓库：https://github.com/wwwwwwcy/3dgs-view-count-study
+配套仓库：https://github.com/wwwcy9995/3dgs-view-count-study
 
 深度学习课程设计。基于已有方法开展小规模实验研究，实际使用 **Nerfstudio Splatfacto 1.1.5 / gsplat 1.4.0**，不是原论文 INRIA 训练实现，也没有复现 FSGS 或提出新算法。
 

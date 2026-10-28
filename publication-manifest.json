@@ -19,7 +19,7 @@
     },
     {
       "path": "README.md",
-      "published_sha256": "9af768b51e704f0c1143f346482d652bdca1c7d47aa9fa547b90b947154db54d",
+      "published_sha256": "b29dc84189334e85fff7c68521cdd13203e236946826f2826b6663795779fd1d",
       "original_sha256": null,
       "changed_for_publication": true,
       "reason": "new publication documentation or helper"
@@ -65,20 +65,20 @@
     },
     {
       "path": "output/report/report-provenance.json",
-      "original_sha256": "2365f77049c594aabed7345d082aedd162e42e093e58be3effe2408cf6042d26",
-      "published_sha256": "2cb01e6d63dd0a1caa4e31888b568bedd0e6da0c85fd841df92db3c54a6991c0",
+      "original_sha256": "02de1ee351669c712f5d68ca00548a96d4366a76288a4af2a3f6370014a26729",
+      "published_sha256": "c9b659ee50460edb990bb81f95023eb3bc2c0f44f0236773e3462d44358ff2df",
       "changed_for_publication": true
     },
     {
       "path": "output/report/report-qa.json",
-      "original_sha256": "3c637afbdab44fe5a34c6f76e986d6fc92e648d2f8793fd50458d90a70b5a3f8",
-      "published_sha256": "3c637afbdab44fe5a34c6f76e986d6fc92e648d2f8793fd50458d90a70b5a3f8",
+      "original_sha256": "f6019d6a362bc3f5abdfd0e0edb9d4dbcb00846403a9c82a9abcc089c791848a",
+      "published_sha256": "f6019d6a362bc3f5abdfd0e0edb9d4dbcb00846403a9c82a9abcc089c791848a",
       "changed_for_publication": false
     },
     {
       "path": "output/report/训练视角数量与3DGS新视角合成_课程报告.docx",
-      "original_sha256": "661b4f47a646291a78146078c07a3e790e7a33380e1cc8d96988a3c32ba8612f",
-      "published_sha256": "661b4f47a646291a78146078c07a3e790e7a33380e1cc8d96988a3c32ba8612f",
+      "original_sha256": "6e6dfbe692eea2206c1e1dbd4f58264f588bc09d633ac7264fd7a079a807525f",
+      "published_sha256": "6e6dfbe692eea2206c1e1dbd4f58264f588bc09d633ac7264fd7a079a807525f",
       "changed_for_publication": false
     },
     {
@@ -464,8 +464,8 @@
     },
     {
       "path": "scripts/build_course_report.py",
-      "original_sha256": "36e29d21ca36959ef7d0aae04124b05f595346b9a5e7fe5498e5450a2e923ad4",
-      "published_sha256": "36e29d21ca36959ef7d0aae04124b05f595346b9a5e7fe5498e5450a2e923ad4",
+      "original_sha256": "832981278af76e5918e527165d5a87fe4d65d1fb0553855c10bdd2476a99a149",
+      "published_sha256": "832981278af76e5918e527165d5a87fe4d65d1fb0553855c10bdd2476a99a149",
       "changed_for_publication": false
     },
     {
@@ -551,5 +551,5 @@
       "reason": "new publication documentation or helper"
     }
   ],
-  "repository_url": "https://github.com/wwwwwwcy/3dgs-view-count-study"
+  "repository_url": "https://github.com/wwwcy9995/3dgs-view-count-study"
 }
